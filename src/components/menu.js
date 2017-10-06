@@ -33,7 +33,7 @@ class App extends Component {
         onClick={() => this.props.history.push('/person/' + person.name)}
       >
         <p style={{margin: 0, fontSize: 18, flex: 1, color: colors.primary}}>{person.name}</p>
-        <p style={{margin: 0, fontSize: 18, flex: 1, textAlign: 'right'}}>${person.total || 0}</p>
+        <p style={{margin: 0, fontSize: 18, flex: 1, textAlign: 'right'}}>${(person.total || 0).toFixed(2)}</p>
       </div>
     );
   }

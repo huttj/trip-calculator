@@ -269,7 +269,7 @@ class Person extends Component {
 
           <div style={{ marginTop: 42, marginBottom: 12, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
             <h2 style={{ margin: 0}}>Expenses</h2>
-            <h3 style={{ margin: '0 4px 0 0' }}>${this.state.person.total}</h3>
+            <h3 style={{ margin: '0 4px 0 0' }}>${this.state.person.total.toFixed(2)}</h3>
           </div>
 
           <div>
