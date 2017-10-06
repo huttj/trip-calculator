@@ -2,6 +2,8 @@
 
 A simple way to split the bill when traveling with friends.
 
+![Screenshot](screenshot.png)
+
 ### Run
 
 1. `yarn install`
