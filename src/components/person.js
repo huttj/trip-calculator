@@ -67,7 +67,8 @@ class Person extends Component {
         name: '',
         price: '',
         description: ''
-      })
+      });
+      this.input.focus();
     }
   }
 
@@ -246,6 +247,8 @@ class Person extends Component {
                 width: '100%',
                 boxSizing: 'border-box'
               }}
+                     min="0.01"
+                     step=".01"
                      type="number" placeholder="Price" value={this.state.price} onChange={this.update('price')}/>
             </label>
 
