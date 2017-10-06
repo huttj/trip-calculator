@@ -107,7 +107,7 @@ class App extends Component {
             <Route path="/add-person" component={AddPerson} />
             <Route path="/person/:name" component={Person} />
 
-            { isSmall && Data.showMenu ? <div onClick={()=>{Data.showMenu = false}} style={{ position: 'absolute', backgroundColor: 'rgba(0,0,0,.5)', top: 0, bottom: 0, left: 0, right: 0 }}/> : null }
+            { isSmall && Data.showMenu ? <div onClick={()=>{Data.showMenu = false}} style={{ position: 'fixed', backgroundColor: 'rgba(0,0,0,.5)', top: 0, bottom: 0, left: 0, right: 0 }}/> : null }
 
           </div>
 
