@@ -51,6 +51,9 @@ class AddPerson extends Component {
   }
 
   render() {
+
+    const disabled = !this.state.name.trim();
+
     return (
       <div style={{ margin: 16, textAlign: 'center' }}>
 
@@ -75,15 +78,15 @@ class AddPerson extends Component {
           <button
             style={{
               display: 'block',
-              backgroundColor: colors.primary,
+              backgroundColor: disabled ? colors.light : colors.primary,
               margin: '16px auto',
               border: 'none',
-              color: 'white',
+              color: disabled ? colors.dark : 'white',
               padding: '10px 16px',
               fontSize: 24,
               borderRadius: 4
             }}
-            disabled={!this.state.name.trim()}
+            disabled={disabled}
           >Add</button>
 
         </form>
