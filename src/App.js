@@ -72,7 +72,7 @@ class App extends Component {
       menuButton = (
         <div
           style={{
-            position: 'fixed',
+            position: 'absolute',
             padding: '4px 6px',
             cursor: 'pointer',
             transform: 'rotate(90deg) scale(1.25,8) translate3d(5px,-6px,0)',
