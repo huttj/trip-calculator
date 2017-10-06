@@ -20,10 +20,12 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.update);
+    window.addEventListener('keyup', this.keyup);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.update);
+    window.removeEventListener('keyup', this.keyup);
   }
 
   update() {
@@ -35,6 +37,30 @@ class App extends Component {
       console.log('resizing', Data.windowWidth);
       this.timeout = null;
     }, 500);
+  }
+
+  keyup(e) {
+    const modal = Data.modals[0];
+
+    if (modal) {
+
+
+      if (e.which === 13) {
+
+        if (modal.ok) modal.ok();
+
+        Data.dismissModal(modal);
+        e.preventDefault();
+        e.stopPropagation();
+
+      } else if (e.which === 27) {
+        if (modal.cancel) modal.cancel();
+        Data.dismissModal(modal);
+        e.preventDefault();
+        e.stopPropagation();
+
+      }
+    }
   }
 
   render() {
@@ -51,7 +77,10 @@ class App extends Component {
             cursor: 'pointer',
             transform: 'rotate(90deg) scale(1.25,8) translate3d(5px,-6px,0)',
           }}
-          onClick={()=>Data.showMenu = true}
+          onClick={e => {
+            Data.showMenu = true;
+            e.stopPropagation();
+          }}
         >
           ...
         </div>
@@ -77,6 +106,8 @@ class App extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/add-person" component={AddPerson} />
             <Route path="/person/:name" component={Person} />
+
+            { isSmall && Data.showMenu ? <div onClick={()=>{Data.showMenu = false}} style={{ position: 'absolute', backgroundColor: 'rgba(0,0,0,.5)', top: 0, bottom: 0, left: 0, right: 0 }}/> : null }
 
           </div>
 

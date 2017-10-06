@@ -1,4 +1,5 @@
 import { observable, action, computed } from 'mobx';
+import autobind from 'autobind-decorator';
 
 import Person from './person';
 
@@ -45,21 +46,27 @@ export default class Data {
     this.people = this.people.filter(n => n !== person);
   }
 
-  @action addModal({ title, body, message, ok, cancel, okText, cancelText, danger }) {
+  @autobind
+  @action
+  addModal({ title, body, message, ok, cancel, okText, cancelText, danger }) {
 
-    const modal = { title, body, message, okText, cancelText, danger };
+    const id = Math.random() * 1E10 | 0;
+
+    const modal = { id, title, body, message, okText, cancelText, danger };
 
     if (ok) {
       modal.ok = () => {
+        console.log('ok', this.modals[0]);
         ok();
-        this.removeModal(modal)
+        this.removeModal(modal);
+        console.log('ok', this.modals[0]);
       };
     }
 
     if (cancel) {
       modal.cancel = () => {
         cancel();
-        this.removeModal(modal)
+        this.removeModal(modal);
       };
     }
 
@@ -67,7 +74,7 @@ export default class Data {
   }
 
   @action removeModal(modal) {
-    this.modals = this.modals.filter(n => n !== modal);
+    this.modals = this.modals.filter(n => n.id !== modal.id);
   }
 
   @action dismissModal(modal) {

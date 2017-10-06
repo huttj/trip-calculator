@@ -46,7 +46,7 @@ class ModalContainer extends Component {
 
     if (buttons.length === 0 || modal.ok || modal.okText) {
 
-      const ok = modal.ok || (() => Data.dismissModal(modal));
+      const ok = modal.ok || (() => Data.removeModal(modal));
       const okText = modal.okText || 'OK';
 
       buttons.push(
@@ -84,8 +84,9 @@ class ModalContainer extends Component {
           width: '90vw',
           maxWidth: '350px',
           padding: 16,
-          borderRadius: 4
-        }}>
+          borderRadius: 4,
+        }}
+        onClick={e => e.stopPropagation()}>
 
           <h2 style={{ marginTop: 0 }}>{modal.title}</h2>
 
