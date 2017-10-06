@@ -38,6 +38,7 @@ class Person extends Component {
     Data.addModal({
       title: 'Remove Person',
       message: 'Really remove ' + this.state.person.name + '? This cannot be undone.',
+      danger: true,
       ok: () => {
         Data.removePerson(this.state.person);
         this.props.history.replace('/');
@@ -75,7 +76,8 @@ class Person extends Component {
     Data.addModal({
       title: 'Remove bill?',
       message: `Really remove ${bill.name || 'this bill'}?`,
-      ok: () => this.state.person.removeBill(bill)
+      ok: () => this.state.person.removeBill(bill),
+      danger: true
     })
   }
 
@@ -212,14 +214,14 @@ class Person extends Component {
           <div style={{display: 'flex', flexDirection: isSmall ? 'column' : 'row', justifyContent: 'space-between'}}>
             <label style={{flex: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', margin: 4}}>
               <span style={{flex: 1, marginBottom: 4, fontSize: 18}}>Expense</span>
-              <input style={{flex: 1, fontSize: 18, padding: 4, borderRadius: 4, border: '1px solid #ccc', width: isSmall ? '100%' : null }} type="text"
+              <input style={{flex: 1, fontSize: 18, padding: 4, borderRadius: 4, border: '1px solid #ccc', width: '100%', boxSizing: 'border-box' }} type="text"
                      placeholder="Name" value={this.state.name} onChange={this.update('name')}
                      ref={ref => this.input = ref}/>
             </label>
 
             <label style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', margin: 4}}>
               <span style={{flex: 1, marginBottom: 4, fontSize: 18}}>Price</span>
-              <input style={{flex: 1, fontSize: 18, padding: 4, borderRadius: 4, border: '1px solid #ccc', width: isSmall ? '100%' : null }}
+              <input style={{flex: 1, fontSize: 18, padding: 4, borderRadius: 4, border: '1px solid #ccc', width: '100%', boxSizing: 'border-box' }}
                      type="number" placeholder="Price" value={this.state.price} onChange={this.update('price')}/>
             </label>
 

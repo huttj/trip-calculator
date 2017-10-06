@@ -35,7 +35,8 @@ class ModalContainer extends Component {
             borderRadius: 4,
             color: colors.dark,
             minWidth: 100,
-            textAlign: 'center'
+            textAlign: 'center',
+            marginLeft: 12
           }}
         >
           {cancelText}
@@ -51,12 +52,13 @@ class ModalContainer extends Component {
       buttons.push(
         <div onClick={ok} style={{
           display: 'inline-block',
-          padding: '8px 12px',
-          backgroundColor: colors.primary,
+          padding: '12px 16px',
+          backgroundColor: modal.danger ? colors.danger : colors.primary,
           borderRadius: 4,
           minWidth: 100,
           color: 'white',
-          textAlign: 'center'
+          textAlign: 'center',
+          marginLeft: 12
         }}>{okText}</div>
       );
     }

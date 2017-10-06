@@ -45,9 +45,9 @@ export default class Data {
     this.people = this.people.filter(n => n !== person);
   }
 
-  @action addModal({ title, body, message, ok, cancel, okText, cancelText }) {
+  @action addModal({ title, body, message, ok, cancel, okText, cancelText, danger }) {
 
-    const modal = { title, body, message, okText, cancelText };
+    const modal = { title, body, message, okText, cancelText, danger };
 
     if (ok) {
       modal.ok = () => {

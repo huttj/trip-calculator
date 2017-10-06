@@ -70,7 +70,7 @@ class App extends Component {
             zIndex: 100
           }}/> : null }
 
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, maxWidth: 1024, margin: '0 auto' }}>
 
             { menuButton }
 
